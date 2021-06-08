@@ -1,3 +1,6 @@
+/*
+file defining the default state of the application
+*/
 export const defaultState = {
     users:[{
         id:"u1",

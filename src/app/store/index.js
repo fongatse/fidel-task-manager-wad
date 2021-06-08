@@ -1,3 +1,4 @@
+//redux store
 import {createStore} from 'redux';
 import {defaultState} from '../../../server/defaultState'
 export const store = createStore(

@@ -1,6 +1,6 @@
 /**
- * The navigation component is present on all non-login pages,
- * and contains a link back to the dashboard, and the user's name.
+ * navigation react component is present on all non-login pages,
+ * 
  */
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';

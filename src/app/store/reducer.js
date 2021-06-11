@@ -8,16 +8,16 @@ let defaultState = {
     groups:[],
     tasks:[]
 };
-
+//function that determines changes to an application's state
 export const reducer = combineReducers({
     session(userSession = defaultState.session,action){
         let {type,authenticated, session} = action;
         switch(type){
-            case mutations.SET_STATE:
+            case mutations.STATE_SET:
                 return {...userSession, id: action.state.session.id};
-            case mutations.REQUEST_AUTHENTICATE_USER:
+            case mutations.REQ_AUTH_USER:
                 return {...userSession, authenticated:mutations.AUTHENTICATING};
-            case mutations.PROCESSING_AUTHENTICATE_USER:
+            case mutations.PROCESS_AUTH_USER:
                 return {...userSession, authenticated};
             default:
                 return userSession;
@@ -25,37 +25,37 @@ export const reducer = combineReducers({
     },
     comments:(comments = defaultState.comments,action)=>{
         switch (action.type) {
-            case mutations.ADD_TASK_COMMENT:
+            case mutations.ADD_COMMENT:
                 let {type,owner,task,content,id} = action;
                 return [...comments,{owner,task,content,id}];
-            case mutations.SET_STATE:
+            case mutations.STATE_SET:
                 return action.state.comments;
         }
         return comments;
     },
     users:(users = defaultState.users,action)=>{
         switch (action.type) {
-            case mutations.SET_STATE:
+            case mutations.STATE_SET:
                 return action.state.users;
         }
         return users;
     },
     groups:(groups = defaultState.groups,action)=>{
         switch (action.type) {
-            case mutations.SET_STATE:
+            case mutations.STATE_SET:
                 return action.state.groups;
         }
         return groups;
     },
     tasks(tasks = defaultState.tasks,action){
         switch(action.type) {
-            case mutations.SET_STATE:
+            case mutations.STATE_SET:
                 return action.state.tasks;
             case mutations.SET_TASK_COMPLETE:
                 return tasks.map(task=>{
                     return (task.id === action.taskID) ? {...task,isComplete:action.isComplete} : task;
                 });
-            case mutations.SET_TASK_GROUP:
+            case mutations.SET_GROUP:
                 return tasks.map(task=>{
                     return (task.id === action.taskID) ? {...task, group:action.groupID} : task;
                 });

@@ -1,3 +1,4 @@
+//main react component, combines all components to be called in index
 import React from 'react';
 import { Route, Router } from 'react-router-dom';
 import { Provider } from 'react-redux';

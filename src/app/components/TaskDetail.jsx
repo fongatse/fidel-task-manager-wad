@@ -1,6 +1,5 @@
 /**
- * The task detail component route is a more sophisticated form that has many different fields.
- * The component automatically calls the REST API [via a mutation] to update the server on every change.
+ * Form for task react component
  */
 import React from 'react';
 import uuid from 'uuid';
@@ -9,8 +8,8 @@ import { Link } from 'react-router-dom';
 
 import { UsernameWithData } from './UsernameDisplay'
 import {
-    setTaskCompletion,
-    addTaskComment,
+    setCompletion,
+    addComment,
     setTaskGroup,
     setTaskName
 } from '../store/mutations'
@@ -115,7 +114,7 @@ function mapDispatchToProps(dispatch, ownProps){
     let id = ownProps.match.params.id;
     return {
         setTaskCompletion(id,isComplete){
-            dispatch(setTaskCompletion(id,isComplete));
+            dispatch(setCompletion(id,isComplete));
         },
         setTaskGroup(e){
             dispatch(setTaskGroup(id,e.target.value));
@@ -130,7 +129,7 @@ function mapDispatchToProps(dispatch, ownProps){
             e.preventDefault();
             if (content !== ``) {
                 input.value = ``;
-                dispatch(addTaskComment(commentID, taskID, ownerID, content));
+                dispatch(addComment(commentID, taskID, ownerID, content));
             }
         }
     }

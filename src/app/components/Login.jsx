@@ -1,5 +1,5 @@
 /**
- * Login react component
+ * Login form react component
  */
 
 import React from 'react';

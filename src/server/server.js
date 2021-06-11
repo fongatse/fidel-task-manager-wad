@@ -32,20 +32,21 @@ if (process.env.NODE_ENV == `production`) {
         res.sendFile(path.resolve('index.html'));
     });
 }
-
+//create new task api
 app.post('/task/new',async (req,res)=>{
     await addNewTask(req.body.task);
     res.status(200).send();
 });
 
 
-
+//update task api
 app.post('/task/update',async (req,res)=>{
     let db = await connectDB();
     await updateTask(req.body.task);
     res.status(200).send();
 });
 
+//new comment api
 app.post('/comment/new',async (req,res)=>{
     let comment = req.body.comment;
     let db = await connectDB();

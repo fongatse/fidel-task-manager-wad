@@ -1,3 +1,4 @@
+//functions that allow the front end to interact with the db and server
 import { take, put, select } from 'redux-saga/effects';
 import uuid from 'uuid';
 import axios from 'axios';
@@ -25,14 +26,14 @@ export function* taskCreationSaga(){
 
 export function* commentCreationSaga(){
     while (true) {
-        const comment = yield take (mutations.ADD_TASK_COMMENT);
+        const comment = yield take (mutations.ADD_COMMENT);
         axios.post(url + `/comment/new`,{comment})
     }
 }
 
 export function* taskModificationSaga(){
     while (true){
-        const task = yield take([mutations.SET_TASK_GROUP, mutations.SET_TASK_NAME,mutations.SET_TASK_COMPLETE]);
+        const task = yield take([mutations.SET_GROUP, mutations.SET_TASK_NAME,mutations.SET_TASK_COMPLETE]);
         axios.post(url + `/task/update`,{
             task:{
                 id:task.taskID,
@@ -45,7 +46,7 @@ export function* taskModificationSaga(){
 
 export function* userAuthenticationSaga(){
     while (true){
-        const {username,password} = yield take(mutations.REQUEST_AUTHENTICATE_USER);
+        const {username,password} = yield take(mutations.REQ_AUTH_USER);
         try {
             const { data } = yield axios.post(url + `/authenticate`,{username,password});
             yield put(mutations.setState(data.state));

@@ -1,4 +1,4 @@
-//default db data
+//default db data for init
 
 import md5 from 'md5';
 export const defaultState = {

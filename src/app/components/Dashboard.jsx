@@ -1,22 +1,19 @@
-//Dashboard for task manager application 
-import React from 'react';
-import {connect} from 'react-redux'
-import {ConnectedTaskList} from './Tasklist'
+/**
+ * Dashboard react component
+ */
 
-export const Dashboard = ({groups}) =>(
-    <div>
-<h2>App Dashboard</h2>
-{groups.map(group=>(
-<div>
-<ConnectedTaskList id = {group.id} name = {group.name}/>
-</div>))}
+import { connect } from 'react-redux';
+import React from 'react';
+import { TaskListWithData } from './TaskList';
+
+const Dashboard = ({groups})=>(
+    <div className="row">
+        {groups.map(group=>(
+            <TaskListWithData key={group.id} {...group} className="col"/>
+        ))}
     </div>
-)
-//connects state data to dashboard
-function mapStateToProps (state){
-    return {
-        groups:state.groups
-    }
-}
-//exports connected dashboard to be used in Main component
-export const ConnectedDashboard = connect(mapStateToProps)(Dashboard);
+);
+
+const mapStateToData = ({groups})=>({groups});
+
+export const DashboardWithData = connect(mapStateToData)(Dashboard);

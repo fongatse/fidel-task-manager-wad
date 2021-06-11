@@ -4,7 +4,7 @@
 
 import { connect } from 'react-redux';
 import React from 'react';
-import { TaskListWithData } from './TaskList.jsx';
+import { TaskListWithData } from '../components/TaskList';
 
 const Dashboard = ({groups})=>(
     <div className="row">

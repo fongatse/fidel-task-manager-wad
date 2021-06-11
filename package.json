@@ -11,7 +11,8 @@
     "server-dev": "nodemon src/server --exec babel-node src/server",
     "start-dev": "concurrently \"npm run server-dev\" \"npm run dev\"",
     "server-spec": "babel-node src/server/server.spec",
-    "start": "npm run server"
+    "start": "npm run server",
+    "init-db": "npm run /Users/fongatse/task-manager-wad/src/server/connect-db.js"
   },
   "keywords": [
     "react",
